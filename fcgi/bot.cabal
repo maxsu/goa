@@ -1,0 +1,12 @@
+Name:                bot
+Version:             0.0
+License:             BSD3
+Author:              Jason Dagit
+Maintainer:          dagit@codersbase.com
+Build-Depends:       base, goa, fastcgi
+Category:            System
+Synopsis:            fastcgi bindings to lambdabot
+
+executable:          bot.fcgi
+main-is:             bot.hs
+ghc-options:         -Wall -O -funbox-strict-fields -fallow-overlapping-instances

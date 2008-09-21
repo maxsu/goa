@@ -1,0 +1,23 @@
+== bot.hs ==
+
+FastCGI wrapper for lambdabot based on GoA.
+
+== Dependencies ==
+ |
+ +- Ghci on Acid    (in this repository)
+ +- lambdabot       http://www.cse.unsw.edu.au/~dons/lambdabot.html
+ +- FastCGI         http://www.cs.chalmers.se/~bringert/darcs/haskell-fastcgi/
+     +- CGI         http://www.cs.chalmers.se/~bringert/darcs/haskell-cgi
+     | +- xhtml     http://darcs.haskell.org/packages/xhtml/
+     +- fastcgi     http://fastcgi.com/ 
+                       probably in your OS' package system, 
+                       e.g sudo apt-get install libfcgi-dev
+
+== Install ==
+
+1. runghc Setup.hs configure --bindir=/home/user/public_html/
+2. runghc Setup.hs build
+3. runghc Setup.hs install
+
+You may need to change the line in main if you have lambdabot installed
+in a different place than the fastcgi executable.

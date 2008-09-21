@@ -1,0 +1,86 @@
+GOA ~~ GHCi On Acid
+===================
+
+This set of tools is an attempt to bring the wonderful world of lambdabot
+commands to the GHC interpreter for ease of use.
+
+The set of commands carefully developed in lambdabot during the years has
+become a very useful tool for haskellers. For some it is like an addiction.
+
+Installation
+------------
+
+-- Add the path to lambdabot's directory to dot-ghci
+    $ vi dot-ghci
+
+-- Build
+    $ chmod +x Setup.hs
+    $ ./Setup.hs configure --prefix=/home/dons
+    $ ./Setup.hs build
+    $ ./Setup.hs install
+
+-- Add dot-ghci to your default ghci setup. Change setLambdabotHome 
+-- according to where your lambdabot is.
+    $ cat dot-ghci >> ~/.ghci
+
+Use
+---
+
+    $ ghci
+
+Fun
+    Prelude GOA> :bs
+    :)
+
+Pointfree refactoring
+
+    Prelude GOA> :pl \f x y -> x * y
+    const (*)
+
+Search for functions
+    Prelude GOA> :index const
+    Prelude
+
+Search for documentation
+    Prelude GOA> :docs Prelude
+    http://haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html
+
+Find source
+    Prelude GOA> :source Prelude
+    http://darcs.haskell.org/packages/base/Prelude.hs
+
+Search by name
+    Prelude GOA> :hoogle const
+    Prelude.const :: a -> b -> a
+
+Search by type
+    Prelude GOA> :hoogle a -> [a] -> a
+    Prelude.foldl :: (a -> b -> a) -> a -> [b] -> a
+    Prelude.foldr :: (a -> b -> b) -> b -> [a] -> b
+    Data.List.foldl' :: (a -> b -> a) -> a -> [b] -> a
+
+
+Extending
+---------
+
+    Define new commands with:
+
+        :def command lambdabot "lambdabot-command-name"
+
+Documentation
+-------------
+
+The documentation ought to be compliant with the specification of
+khjk-structured-text by Sven Moritz Hallberg <http://www.khjk.org/~sm/>.
+
+Dependencies
+------------
+
+[Lambdabot]: <http://www.cse.unsw.edu.au/~dons/lambdabot/>.
+[khjk-structured-text]: If you want to produce HTML documentation.
+
+Additional Fun
+--------------
+
+Look in fcgi for a fastcgi binding for lambdabot.
+

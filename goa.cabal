@@ -5,8 +5,7 @@ License-File:        LICENSE
 Author:              Paolo Martini
 Maintainer:          Chris Done <chrisdone@gmail.com>
 Synopsis:            GHCi on Acid
-Description:         Offers an interface to be able to call Lambdabot commands within GHCi;
-                     this is broken with recent Lambdabots.
+Description:         Offers an interface to be able to call Lambdabot commands within GHCi. Now works with recent lambdabots.
 Build-Depends:       base, directory, process,filepath
 Build-Type:          Simple
 Category:            System

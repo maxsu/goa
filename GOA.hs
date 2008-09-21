@@ -77,11 +77,16 @@ state = unsafePerformIO $ newIORef Nothing
 -- Fork lambdabot on start up
 --
 wakeup :: IO ()
-wakeup = do
+wakeup = do wakeup'; return ()
+
+-- | Bool indicates success/failure
+wakeup' :: IO Bool
+wakeup' = do
     m <- forkLambdabot
     case m of
-        Nothing        -> return ()
-        Just (a,b,c,d) -> writeIORef state (Just (ST a b c d))
+        Nothing        -> return False
+        Just (a,b,c,d) -> do writeIORef state (Just (ST a b c d))
+                             return True
 
 -- |
 -- fork a lambdabot on start up
@@ -132,8 +137,8 @@ query command args
         (case m of
             Nothing           -> do
               -- maybe we can start the process automatically
-              wakeup
-              query command args
+              success <- wakeup'
+              if success then query command args else return []
             Just (ST i o _ _) -> do
                 -- some commands seem to assume no whitespace at the end so we trim it
                 let s = reverse . dropWhile isSpace . reverse $ unwords [command,args]
